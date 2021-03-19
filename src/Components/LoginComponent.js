@@ -1,31 +1,50 @@
 import React from "react";
-import GoogleLogin from "react-google-login";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
 import googleLogo from "../assets/google-logo.png";
 
-function LoginComponent() {
-  const responseGoogle = (res) => {
-    console.log(res);
+function LoginComponent({ details, setDetails }) {
+  function listConnectionNames() {
+    window.gapi.client.people.people.connections
+      .list({
+        resourceName: "people/me",
+        pageSize: 500,
+        personFields: "names,emailAddresses,coverPhotos,phoneNumbers,photos",
+      })
+      .then(function (response) {
+        let result = response.result;
+        setDetails(result);
+      });
+  }
+
+  const login = () => {
+    window.gapi.client
+      .init({
+        apikey: "AIzaSyBwqL8NaarxDj6ruvpEkekejX4jQmBQgc0",
+        clientId:
+          "1058139453928-21lt7pcenia6gl7eev3cb2ffl05v32un.apps.googleusercontent.com",
+        discoveryDocs: [
+          "https://www.googleapis.com/discovery/v1/apis/people/v1/rest",
+        ],
+        scope: "https://www.googleapis.com/auth/contacts.readonly",
+      })
+      .then(() => {
+        window.gapi.auth2
+          .getAuthInstance()
+          .signIn()
+          .then(() => {
+            listConnectionNames();
+          });
+      });
   };
 
   return (
     <LoginComp>
-      <GoogleLogin
-        render={() => (
-          <StyledButton>
-            <img src={googleLogo} alt="google" />
-            <div>Sign In</div>
-          </StyledButton>
-        )}
-        clientId="1019792659480-v1lvsoqi495r5u4qclg70eothoorob5h.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={"single_host_origin"}
-        scope="https://www.googleapis.com/auth/contacts.readonly email profile"
-      />
+      <StyledButton onClick={login}>
+        <img src={googleLogo} alt="google" />
+        <div>Sign In</div>
+      </StyledButton>
     </LoginComp>
   );
 }
@@ -43,8 +62,10 @@ const LoginComp = styled(motion.div)`
   border-radius: 10px;
 `;
 
-const StyledButton = styled(motion.div)`
+const StyledButton = styled(motion.button)`
   background-color: #0a45c2;
+  outline: none;
+  border: none;
   color: white;
   border-radius: 4px;
   font-weight: 600;

@@ -4,10 +4,10 @@ import styled from "styled-components";
 
 import LoginComponent from "../Components/LoginComponent";
 
-function Home() {
+function Home({ details, setDetails }) {
   return (
     <LoginPage>
-      <LoginComponent />
+      <LoginComponent details={details} setDetails={setDetails} />
     </LoginPage>
   );
 }
