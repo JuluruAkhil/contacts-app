@@ -10,6 +10,7 @@ function ContactsTableComponent({ details }) {
   useEffect(() => {
     if (details !== null) {
       const connections = details.connections;
+      console.log(details);
       let newDetails = [];
       connections.forEach((connection) => {
         let newConnection = {};

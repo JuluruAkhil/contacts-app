@@ -23,9 +23,19 @@ function NavComponent({ setDetails, personal }) {
           });
       });
   };
+  const navAnimation = {
+    hidden: { opacity: 0, y: -100 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
-    <Nav>
+    <Nav variants={navAnimation} initial="hidden" animate="show">
       <User>
         <Photo>
           <img src={personal.photo} alt="profile" />
@@ -72,20 +82,22 @@ function NavComponent({ setDetails, personal }) {
 }
 
 const Nav = styled(motion.div)`
-  /* position: fixed;
-  width: 100vw;
-  height: 78px;
-  left: 0px;
-  top: 0px; */
   height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: linear-gradient(90.21deg, #053ed1 0%, #0f4eac 100%);
-
-  svg {
+  .logout {
     margin-right: 20px;
+    width: 40px;
+    border-radius: 50%;
+    svg {
+      transform: translateX(3px) translateY(3px);
+    }
+    &:hover {
+      background-color: black;
+    }
+    transition: all 0.5s;
   }
 `;
 

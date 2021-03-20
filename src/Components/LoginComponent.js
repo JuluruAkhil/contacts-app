@@ -14,7 +14,12 @@ function LoginComponent({ details, setDetails, personal, setPersonal }) {
       })
       .then(function (response) {
         let result = response.result;
-        setDetails(result);
+        console.log(result);
+        if (result.connections === undefined) {
+          console.log("hello");
+        } else {
+          setDetails(result);
+        }
       });
   }
 
@@ -53,8 +58,28 @@ function LoginComponent({ details, setDetails, personal, setPersonal }) {
       });
   };
 
+  const loginAnimation = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        when: "beforeChildren",
+        staggerChildren: 0.25,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: 300,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
-    <LoginComp>
+    <LoginComp variants={loginAnimation} initial="hidden" animate="show">
       <StyledButton onClick={login}>
         <img src={googleLogo} alt="google" />
         <div>Sign In</div>
@@ -88,17 +113,26 @@ const StyledButton = styled(motion.button)`
   margin: 40px;
   width: 50%;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
+  cursor: pointer;
   img {
-    width: 32px;
+    width: 28px;
     object-fit: cover;
   }
   display: flex;
   justify-content: center;
   align-items: center;
   div {
-    margin-left: 30px;
+    margin-left: 15px;
   }
+  &:hover {
+    background-color: black;
+  }
+
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  transition: all 0.5s;
 `;
 
 export default LoginComponent;

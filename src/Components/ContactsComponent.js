@@ -3,10 +3,25 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import ContactsTableComponent from "./ContactsTableComponent";
 
+const contactsAnimation = {
+  hidden: { opacity: 0, y: 100 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 function ContactsComponent({ details, setDetails }) {
   return (
     <ContactsComp>
-      <ContactsCont>
+      <ContactsCont
+        variants={contactsAnimation}
+        initial="hidden"
+        animate="show"
+      >
         <TitleCont>
           <div className="title">Contacts</div>
           <div className="noContacts">({details.totalItems})</div>

@@ -89,11 +89,9 @@ const ContactCardCont = styled(motion.div)`
     width: 20vw;
   }
   &:hover {
-    background: #ffffff;
     border: 1px solid #4eb4ff;
-    box-sizing: border-box;
+    scale: 1.1;
     box-shadow: 0px 4px 10px rgba(5, 62, 209, 0.19);
-    border-radius: 8px;
   }
   margin-bottom: 10px;
 `;
