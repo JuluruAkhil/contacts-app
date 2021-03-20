@@ -2,8 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import testPerson from "../assets/test_person_image.jpeg";
-
 function ContactCardComponent({ connection }) {
   const randomColour = () => {
     const colors = [
@@ -22,7 +20,7 @@ function ContactCardComponent({ connection }) {
     <ContactCardCont>
       <div className="name-img">
         <img
-          src={connection.photo ? connection.photo : testPerson}
+          src={connection.photo ? connection.photo : ""}
           alt="Profile Pic"
           style={{ borderColor: randomColour() }}
         />
