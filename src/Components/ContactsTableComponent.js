@@ -44,9 +44,9 @@ function ContactsTableComponent({ details }) {
   return (
     <ContactsTableCont>
       <div className="headings">
-        <div id="name">Name</div>
-        <div id="email">Email</div>
-        <div id="phone">PhoneNo</div>
+        <div id="name">NAME</div>
+        <div id="email">EMAIL</div>
+        <div id="phone">PHONE NUMBER</div>
       </div>
       <div className="scroll">
         {parsedDetails &&

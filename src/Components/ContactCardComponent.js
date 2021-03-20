@@ -82,12 +82,25 @@ const ContactCardCont = styled(motion.div)`
       border: 1px solid;
       z-index: 2;
     }
+    div {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0.08em;
+    }
   }
   .email {
     width: 40vw;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.08em;
   }
   .phone {
     width: 20vw;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.08em;
   }
   &:hover {
     border: 1px solid #4eb4ff;

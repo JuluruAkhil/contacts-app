@@ -40,7 +40,7 @@ const ContactsComp = styled(motion.div)`
 `;
 
 const ContactsCont = styled(motion.div)`
-  height: 80vh;
+  height: 85vh;
   width: 70%;
   /* background-color: gray; */
   display: flex;
@@ -55,6 +55,7 @@ const TitleCont = styled(motion.div)`
     font-weight: 600;
     font-size: 26px;
     line-height: 30px;
+    letter-spacing: 0.08em;
   }
   .noContacts {
     font-size: 16px;
