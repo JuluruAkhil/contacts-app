@@ -17,6 +17,7 @@ function Contacts({ details, setDetails, personal, setPersonal }) {
 const ContactsPage = styled(motion.div)`
   display: flex;
   flex-direction: column;
+  background-color: #fbfdfe;
 `;
 
 export default Contacts;

@@ -91,7 +91,6 @@ const ContactCardCont = styled(motion.div)`
   }
   &:hover {
     border: 1px solid #4eb4ff;
-    scale: 1.1;
     box-shadow: 0px 4px 10px rgba(5, 62, 209, 0.19);
   }
   transition: all 0.5s;

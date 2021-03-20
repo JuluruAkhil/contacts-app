@@ -65,6 +65,8 @@ function LoginComponent({ details, setDetails, personal, setPersonal }) {
       y: 0,
       transition: {
         duration: 1,
+        when: "beforeChildren",
+        staggerChildren: 0.25,
       },
     },
   };

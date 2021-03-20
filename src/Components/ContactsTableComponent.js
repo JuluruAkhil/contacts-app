@@ -67,7 +67,6 @@ const ContactsTableCont = styled(motion.div)`
     justify-content: flex-start;
     align-items: center;
     color: #b0c6ff;
-    margin-bottom: 10px;
     #name {
       width: 28vw;
       padding-left: 46px;
@@ -81,6 +80,8 @@ const ContactsTableCont = styled(motion.div)`
   }
   .scroll {
     padding-right: 12px;
+    padding-top: 10px;
+    padding-left: 12px;
     overflow-y: scroll;
   }
 `;

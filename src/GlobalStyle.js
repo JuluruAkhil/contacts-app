@@ -22,8 +22,9 @@ h2 h3 p {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(155, 155, 155, 0.5) transperent;
+  scrollbar-color: #053ED1 #F4F7FF;
 }
+
 
 *::-webkit-scrollbar {
   width: 6px;
@@ -34,7 +35,7 @@ h2 h3 p {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #053ED1;;
+  background-color: #053ED1;
   border-radius: 4px;
   border: transparent;
 }
