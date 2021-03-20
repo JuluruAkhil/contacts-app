@@ -56,6 +56,7 @@ const ContactCardCont = styled(motion.div)`
   align-items: center;
   align-content: flex-start;
   background: #ffffff;
+  border: 1px solid #ffffff;
   box-shadow: 0px 2px 6px rgba(5, 62, 209, 0.14);
   border-radius: 8px;
   z-index: 0;
@@ -93,6 +94,8 @@ const ContactCardCont = styled(motion.div)`
     scale: 1.1;
     box-shadow: 0px 4px 10px rgba(5, 62, 209, 0.19);
   }
+  transition: all 0.5s;
+
   margin-bottom: 10px;
 `;
 
