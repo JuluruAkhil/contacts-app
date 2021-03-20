@@ -2,8 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import testPerson from "../assets/test_person_image.jpeg";
-
 function NavComponent({ setDetails, personal }) {
   const logout = () => {
     window.gapi.client
