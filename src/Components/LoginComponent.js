@@ -20,11 +20,14 @@ function LoginComponent({ details, setDetails, personal, setPersonal }) {
 
   const userDetails = () => {
     console.log(1111111111);
-    let profile = window.gapi.auth2.getAuthInstance().currentUser.get();
+    let profile = window.gapi.auth2
+      .getAuthInstance()
+      .currentUser.get()
+      .getBasicProfile();
     setPersonal({
-      name: profile.Hs.sd,
-      email: profile.Hs.nt,
-      photo: profile.Hs.jI,
+      name: profile.getName(),
+      email: profile.getEmail(),
+      photo: profile.getImageUrl(),
     });
   };
 

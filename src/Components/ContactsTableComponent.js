@@ -49,13 +49,8 @@ function ContactsTableComponent({ details }) {
       </div>
       <div className="scroll">
         {parsedDetails &&
-          parsedDetails.map((connection) => {
-            return (
-              <ContactCardComponent
-                key={connection.name}
-                connection={connection}
-              />
-            );
+          parsedDetails.map((connection, key) => {
+            return <ContactCardComponent key={key} connection={connection} />;
           })}
       </div>
     </ContactsTableCont>

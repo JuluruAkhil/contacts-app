@@ -5,7 +5,7 @@ import GlobalStyle from "./GlobalStyle";
 
 function App() {
   const [details, setDetails] = useState(null);
-  const [personal, setPersonal] = useState(null);
+  const [personal, setPersonal] = useState({ photo: "", name: "", email: "" });
 
   return (
     <div className="App">
