@@ -69,7 +69,7 @@ const ContactsTableCont = styled(motion.div)`
     color: #b0c6ff;
     #name {
       width: 28vw;
-      padding-left: 46px;
+      padding-left: 60px;
     }
     #email {
       width: 27vw;
