@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import googleLogo from "../assets/google-logo.png";
 
-function LoginComponent({ details, setDetails }) {
+function LoginComponent({ details, setDetails, personal, setPersonal }) {
   function listConnectionNames() {
     window.gapi.client.people.people.connections
       .list({
@@ -17,6 +17,16 @@ function LoginComponent({ details, setDetails }) {
         setDetails(result);
       });
   }
+
+  const userDetails = () => {
+    console.log(1111111111);
+    let profile = window.gapi.auth2.getAuthInstance().currentUser.get();
+    setPersonal({
+      name: profile.Hs.sd,
+      email: profile.Hs.nt,
+      photo: profile.Hs.jI,
+    });
+  };
 
   const login = () => {
     window.gapi.client
@@ -35,6 +45,7 @@ function LoginComponent({ details, setDetails }) {
           .signIn()
           .then(() => {
             listConnectionNames();
+            userDetails();
           });
       });
   };

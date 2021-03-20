@@ -5,17 +5,26 @@ import GlobalStyle from "./GlobalStyle";
 
 function App() {
   const [details, setDetails] = useState(null);
+  const [personal, setPersonal] = useState(null);
 
   return (
     <div className="App">
       <GlobalStyle />
       {details === null ? (
-        <Home details={details} setDetails={setDetails} />
+        <Home
+          details={details}
+          setDetails={setDetails}
+          personal={personal}
+          setPersonal={setPersonal}
+        />
       ) : (
-        <Contacts details={details} setDetails={setDetails} />
+        <Contacts
+          details={details}
+          setDetails={setDetails}
+          personal={personal}
+          setPersonal={setPersonal}
+        />
       )}
-      {/* <Home details={details} setDetails={setDetails} />
-      <Contacts details={details} setDetails={setDetails} /> */}
     </div>
   );
 }

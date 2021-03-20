@@ -46,6 +46,7 @@ const TitleCont = styled(motion.div)`
     line-height: 24px;
     margin-left: 10px;
   }
+  margin-bottom: 15px;
 `;
 
 export default ContactsComponent;

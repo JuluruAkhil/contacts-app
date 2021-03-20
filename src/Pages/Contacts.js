@@ -5,10 +5,10 @@ import ContactsComponent from "../Components/ContactsComponent";
 
 import NavComponent from "../Components/NavComponent";
 
-function Contacts({ details, setDetails }) {
+function Contacts({ details, setDetails, personal, setPersonal }) {
   return (
     <ContactsPage>
-      <NavComponent setDetails={setDetails} />
+      <NavComponent setDetails={setDetails} personal={personal} />
       <ContactsComponent details={details} setDetails={setDetails} />
     </ContactsPage>
   );

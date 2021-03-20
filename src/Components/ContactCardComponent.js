@@ -61,12 +61,10 @@ const ContactCardCont = styled(motion.div)`
   box-shadow: 0px 2px 6px rgba(5, 62, 209, 0.14);
   border-radius: 8px;
   z-index: 0;
-  div {
-    flex-grow: 1;
-  }
   .name-img {
     display: flex;
-    justify-content: center;
+    width: 40vw;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     svg {
@@ -85,6 +83,12 @@ const ContactCardCont = styled(motion.div)`
       border: 1px solid;
       z-index: 2;
     }
+  }
+  .email {
+    width: 40vw;
+  }
+  .phone {
+    width: 20vw;
   }
   &:hover {
     background: #ffffff;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import testPerson from "../assets/test_person_image.jpeg";
 
-function NavComponent({ setDetails }) {
+function NavComponent({ setDetails, personal }) {
   const logout = () => {
     window.gapi.client
       .init({
@@ -30,12 +30,12 @@ function NavComponent({ setDetails }) {
     <Nav>
       <User>
         <Photo>
-          <img src={testPerson} alt="profile" />
+          <img src={personal.photo} alt="profile" />
         </Photo>
 
         <Details>
-          <h2>Akhil Juluru</h2>
-          <p>akhil.juuru@gmail.com</p>
+          <h2>{personal.name}</h2>
+          <p>{personal.email}</p>
         </Details>
       </User>
       <div className="logout" onClick={logout}>

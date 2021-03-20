@@ -8,45 +8,45 @@ function ContactsTableComponent({ details }) {
   const [parsedDetails, setParsedDetails] = useState(null);
 
   useEffect(() => {
-    const connections = details.connections;
-    let newDetails = [];
-    connections.forEach((connection) => {
-      let newConnection = {};
-      if (connection.names) {
-        newConnection.name = connection.names[0].displayName;
-      }
-      if (connection.phoneNumbers) {
-        if (connection.phoneNumbers[0].value.split(" ").join("")[0] === "+") {
-          newConnection.phoneNumber = connection.phoneNumbers[0].value
-            .split(" ")
-            .join("")
-            .substring(3);
-        } else {
-          newConnection.phoneNumber = connection.phoneNumbers[0].value
-            .split(" ")
-            .join("");
+    if (details !== null) {
+      const connections = details.connections;
+      let newDetails = [];
+      connections.forEach((connection) => {
+        let newConnection = {};
+        if (connection.names) {
+          newConnection.name = connection.names[0].displayName;
         }
-      }
-      if (connection.photos) {
-        newConnection.photo = connection.photos[0].url;
-      }
-      if (connection.emailAddresses) {
-        newConnection.emailAddress = connection.emailAddresses[0].value;
-      }
-      newDetails.push(newConnection);
-    });
-    setParsedDetails(newDetails);
-  }, [details.connections]);
+        if (connection.phoneNumbers) {
+          if (connection.phoneNumbers[0].value.split(" ").join("")[0] === "+") {
+            newConnection.phoneNumber = connection.phoneNumbers[0].value
+              .split(" ")
+              .join("")
+              .substring(3);
+          } else {
+            newConnection.phoneNumber = connection.phoneNumbers[0].value
+              .split(" ")
+              .join("");
+          }
+        }
+        if (connection.photos) {
+          newConnection.photo = connection.photos[0].url;
+        }
+        if (connection.emailAddresses) {
+          newConnection.emailAddress = connection.emailAddresses[0].value;
+        }
+        newDetails.push(newConnection);
+      });
+      setParsedDetails(newDetails);
+    }
+  }, [details, details.connections]);
 
   return (
     <ContactsTableCont>
       <div className="headings">
         <div id="name">Name</div>
-        <div>Email</div>
-        <div>PhoneNo</div>
+        <div id="email">Email</div>
+        <div id="phone">PhoneNo</div>
       </div>
-      {console.log(parsedDetails)}
-      {console.log(details)}
       <div className="scroll">
         {parsedDetails &&
           parsedDetails.map((connection) => {
@@ -68,15 +68,19 @@ const ContactsTableCont = styled(motion.div)`
   overflow: hidden;
   .headings {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
     color: #b0c6ff;
-    div {
-      flex-grow: 1;
-    }
+    margin-bottom: 10px;
     #name {
-      margin: 10px;
-      margin-left: 46px;
+      width: 28vw;
+      padding-left: 46px;
+    }
+    #email {
+      width: 27vw;
+    }
+    #phonw {
+      width: 20vw;
     }
   }
   .scroll {
