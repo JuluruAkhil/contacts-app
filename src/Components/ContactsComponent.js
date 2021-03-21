@@ -45,6 +45,9 @@ const ContactsCont = styled(motion.div)`
   /* background-color: gray; */
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 480px) {
+    width: 90%;
+  }
 `;
 
 const TitleCont = styled(motion.div)`
@@ -63,6 +66,10 @@ const TitleCont = styled(motion.div)`
     margin-left: 10px;
   }
   margin-bottom: 15px;
+  margin-left: 15px;
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+  }
 `;
 
 export default ContactsComponent;

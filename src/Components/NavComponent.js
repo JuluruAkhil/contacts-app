@@ -117,6 +117,9 @@ const User = styled(motion.div)`
       border: 2px solid #ffffff;
     }
   }
+  @media screen and (max-width: 480px) {
+    padding-left: 24px;
+  }
 `;
 
 const Photo = styled(motion.div)`

@@ -4,7 +4,14 @@ import styled from "styled-components";
 
 import googleLogo from "../assets/google-logo.png";
 
-function LoginComponent({ details, setDetails, personal, setPersonal }) {
+function LoginComponent({
+  details,
+  setDetails,
+  personal,
+  setPersonal,
+  toast,
+  setToast,
+}) {
   function listConnectionNames() {
     window.gapi.client.people.people.connections
       .list({
@@ -14,17 +21,16 @@ function LoginComponent({ details, setDetails, personal, setPersonal }) {
       })
       .then(function (response) {
         let result = response.result;
-        console.log(result);
         if (result.connections === undefined) {
-          console.log("hello");
+          setToast("warning");
         } else {
           setDetails(result);
+          setToast("success");
         }
       });
   }
 
   const userDetails = () => {
-    console.log(1111111111);
     let profile = window.gapi.auth2
       .getAuthInstance()
       .currentUser.get()
@@ -83,7 +89,7 @@ function LoginComponent({ details, setDetails, personal, setPersonal }) {
 
 const LoginComp = styled(motion.div)`
   background-color: white;
-  height: 60vh;
+  max-height: 60vh;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -92,6 +98,9 @@ const LoginComp = styled(motion.div)`
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(5, 62, 209, 0.19);
   border-radius: 10px;
+  @media screen and (max-width: 480px) {
+    width: 80vw;
+  }
 `;
 
 const StyledButton = styled(motion.button)`
@@ -126,6 +135,9 @@ const StyledButton = styled(motion.button)`
     background-color: rgba(0, 0, 0, 0.7);
   }
   transition: all 0.5s;
+  @media screen and (max-width: 480px) {
+    width: 70%;
+  }
 `;
 
 export default LoginComponent;

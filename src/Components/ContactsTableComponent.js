@@ -10,7 +10,6 @@ function ContactsTableComponent({ details }) {
   useEffect(() => {
     if (details !== null) {
       const connections = details.connections;
-      console.log(details);
       let newDetails = [];
       connections.forEach((connection) => {
         let newConnection = {};
@@ -74,8 +73,8 @@ const ContactsTableCont = styled(motion.div)`
     #email {
       width: 27vw;
     }
-    #phonw {
-      width: 20vw;
+    @media screen and (max-width: 480px) {
+      display: none;
     }
   }
   .scroll {
@@ -83,6 +82,7 @@ const ContactsTableCont = styled(motion.div)`
     padding-top: 10px;
     padding-left: 12px;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 `;
 

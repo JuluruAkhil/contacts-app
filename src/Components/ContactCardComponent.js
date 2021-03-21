@@ -60,12 +60,23 @@ const ContactCardCont = styled(motion.div)`
   box-shadow: 0px 2px 6px rgba(5, 62, 209, 0.14);
   border-radius: 8px;
   z-index: 0;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .name-img {
     display: flex;
     width: 40vw;
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
     svg {
       position: absolute;
       left: 78px;
@@ -81,12 +92,19 @@ const ContactCardCont = styled(motion.div)`
       margin-left: 46px;
       border: 1px solid;
       z-index: 2;
+      @media screen and (max-width: 480px) {
+        margin-left: 10px;
+        margin-bottom: 0;
+      }
     }
     div {
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: 0.08em;
+      @media screen and (max-width: 480px) {
+        margin-top: 10px;
+      }
     }
   }
   .email {
@@ -94,6 +112,11 @@ const ContactCardCont = styled(motion.div)`
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.08em;
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      text-align: center;
+      margin: 10px;
+    }
   }
   .phone {
     width: 20vw;
@@ -101,6 +124,10 @@ const ContactCardCont = styled(motion.div)`
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0.08em;
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      text-align: center;
+    }
   }
   &:hover {
     border: 1px solid #4eb4ff;
