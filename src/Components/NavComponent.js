@@ -142,6 +142,7 @@ const Nav = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   background: linear-gradient(90.21deg, #053ed1 0%, #0f4eac 100%);
   .photo-svg {
     position: fixed;
@@ -154,6 +155,9 @@ const Nav = styled(motion.div)`
     right: -5vw;
     top: -5vw;
     z-index: 0;
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
   .logout {
     margin-right: 20px;
