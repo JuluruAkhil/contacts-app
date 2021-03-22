@@ -2,6 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+export const navAnimation = {
+  hidden: { opacity: 0, y: -100 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 function NavComponent({ setDetails, personal }) {
   const logout = () => {
     window.gapi.client
@@ -22,16 +33,6 @@ function NavComponent({ setDetails, personal }) {
             setDetails(null);
           });
       });
-  };
-  const navAnimation = {
-    hidden: { opacity: 0, y: -100 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
   };
 
   return (

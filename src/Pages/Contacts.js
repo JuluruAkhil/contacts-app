@@ -3,13 +3,18 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import ContactsComponent from "../Components/ContactsComponent";
 
-import NavComponent from "../Components/NavComponent";
+import NavComponent, { navAnimation } from "../Components/NavComponent";
 
 function Contacts({ details, setDetails, personal, setPersonal }) {
   return (
     <ContactsPage>
       <NavComponent setDetails={setDetails} personal={personal} />
-      <div className="white"></div>
+      <motion.div
+        variants={navAnimation}
+        initial="hidden"
+        animate="show"
+        className="white"
+      ></motion.div>
       <ContactsComponent details={details} setDetails={setDetails} />
     </ContactsPage>
   );
