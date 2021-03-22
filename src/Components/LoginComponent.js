@@ -25,6 +25,7 @@ function LoginComponent({
           setToast("warning");
         } else {
           setDetails(result);
+          localStorage.setItem("details", JSON.stringify(result));
           setToast("success");
         }
       });
@@ -40,6 +41,14 @@ function LoginComponent({
       email: profile.getEmail(),
       photo: profile.getImageUrl(),
     });
+    localStorage.setItem(
+      "personal",
+      JSON.stringify({
+        name: profile.getName(),
+        email: profile.getEmail(),
+        photo: profile.getImageUrl(),
+      })
+    );
   };
 
   const login = () => {

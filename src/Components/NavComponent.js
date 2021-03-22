@@ -36,6 +36,61 @@ function NavComponent({ setDetails, personal }) {
 
   return (
     <Nav variants={navAnimation} initial="hidden" animate="show">
+      <svg
+        className="photo-svg"
+        width="197"
+        height="78"
+        viewBox="0 0 197 78"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          opacity="0.6"
+          d="M179.968 -45.7106C199.956 -3.09177 217.394 82.0419 131.931 122.123C89.3579 142.089 0.937119 99 0.937352 60.7641C0.937352 32.9115 13.3891 32.4124 55.9619 12.4464C98.5348 -7.51964 159.98 -88.3295 179.968 -45.7106Z"
+          fill="url(#paint0_linear)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear"
+            x1="-7.97052"
+            y1="19.3265"
+            x2="172.153"
+            y2="-64.0925"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#097AFF" />
+            <stop offset="1" stop-color="#0041E8" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <svg
+        className="logout-svg"
+        width="201"
+        height="78"
+        viewBox="0 0 201 78"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          opacity="0.6"
+          d="M199.949 -45.7106C219.937 -3.09177 237.376 82.0419 151.912 122.123C109.339 142.089 20.9183 99 20.9186 60.7641C20.9186 32.9115 33.3703 32.4124 75.9431 12.4464C118.516 -7.51964 179.962 -88.3295 199.949 -45.7106Z"
+          fill="url(#paint0_linear)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear"
+            x1="12.0107"
+            y1="19.3265"
+            x2="192.134"
+            y2="-64.0925"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#097AFF" />
+            <stop offset="1" stop-color="#0041E8" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       <User>
         <Photo>
           <img src={personal.photo} alt="profile" />
@@ -87,6 +142,18 @@ const Nav = styled(motion.div)`
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(90.21deg, #053ed1 0%, #0f4eac 100%);
+  .photo-svg {
+    position: fixed;
+    z-index: 0;
+  }
+  .logout-svg {
+    position: absolute;
+    width: 209.95px;
+    height: 152.48px;
+    left: 90vw;
+    top: -5vw;
+    z-index: 0;
+  }
   .logout {
     margin-right: 20px;
     width: 40px;
@@ -141,6 +208,7 @@ const Details = styled(motion.div)`
   color: white;
   display: flex;
   flex-direction: column;
+  z-index: 3;
   h3 {
     font-weight: 500;
     font-size: 18px;

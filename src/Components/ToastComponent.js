@@ -2,8 +2,38 @@ import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+const toastAnimation = {
+  hidden: { opacity: 0, y: -100 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -100,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+};
+
 function ToastComponent({ children }) {
-  return <Toast>{children}</Toast>;
+  return (
+    <Toast
+      key="hello"
+      variants={toastAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      {children}
+    </Toast>
+  );
 }
 
 const Toast = styled(motion.div)`
@@ -11,7 +41,7 @@ const Toast = styled(motion.div)`
   top: 5%;
 
   .alert {
-    width: 30vw;
+    width: 40vw;
     margin: 20px auto;
     padding: 30px;
     position: relative;

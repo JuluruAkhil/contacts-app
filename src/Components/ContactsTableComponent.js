@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-// import _ from "lodash";
 import ContactCardComponent from "./ContactCardComponent";
 
 function ContactsTableComponent({ details }) {
@@ -17,16 +16,9 @@ function ContactsTableComponent({ details }) {
           newConnection.name = connection.names[0].displayName;
         }
         if (connection.phoneNumbers) {
-          if (connection.phoneNumbers[0].value.split(" ").join("")[0] === "+") {
-            newConnection.phoneNumber = connection.phoneNumbers[0].value
-              .split(" ")
-              .join("")
-              .substring(3);
-          } else {
-            newConnection.phoneNumber = connection.phoneNumbers[0].value
-              .split(" ")
-              .join("");
-          }
+          newConnection.phoneNumber = connection.phoneNumbers[0].value
+            .split(" ")
+            .join("");
         }
         if (connection.photos) {
           newConnection.photo = connection.photos[0].url;

@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .App {
-  background-image: url(${background});
+  /* background-image: url(${background}); */
   background-size: 100%;
   overflow: hidden;
 }
@@ -39,6 +39,7 @@ h2 h3 p {
   border-radius: 4px;
   border: transparent;
 }
+html, body { margin:0; padding:0; overflow:hidden }
 `;
 
 export default GlobalStyle;
