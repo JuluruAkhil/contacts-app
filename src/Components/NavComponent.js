@@ -31,6 +31,7 @@ function NavComponent({ setDetails, personal }) {
           .signOut()
           .then(() => {
             setDetails(null);
+            localStorage.setItem("details", null);
           });
       });
   };
