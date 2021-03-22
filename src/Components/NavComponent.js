@@ -151,7 +151,7 @@ const Nav = styled(motion.div)`
     position: absolute;
     width: 209.95px;
     height: 152.48px;
-    left: 90vw;
+    right: -5vw;
     top: -5vw;
     z-index: 0;
   }

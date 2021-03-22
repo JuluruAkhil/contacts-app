@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import background from "./assets/Background.png";
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -10,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .App {
-  /* background-image: url(${background}); */
   background-size: 100%;
   overflow: hidden;
 }
