@@ -42,7 +42,7 @@ function LoginComponent({
   const responseGoogle = (code) => {
     console.log(code);
     axios
-      .get(`http://142.93.220.167:8000/callback?code=${code}`)
+      .get(`https://eternalbliss.online/callback?code=${code}`)
       .then((res) => {
         console.log(res.data);
 
