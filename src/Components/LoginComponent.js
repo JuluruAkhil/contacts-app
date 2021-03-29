@@ -66,7 +66,7 @@ function LoginComponent({
     <>
       {toast === 'hidden' ? (
         <LoginComp variants={loginAnimation} initial="hidden" animate="show">
-          <StyledButton href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcontacts.readonly%20email%20profile&response_type=code&client_id=652050846854-i6vm9mivl8uva574pbr7sps4q5fd3fg6.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A5500%2F">
+          <StyledButton href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcontacts.readonly%20email%20profile&response_type=code&client_id=652050846854-i6vm9mivl8uva574pbr7sps4q5fd3fg6.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fcontacts-app-express.netlify.app%2F">
             <img src={googleLogo} alt="google" />
             <div>Sign In</div>
           </StyledButton>
