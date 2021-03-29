@@ -1,7 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import ContactsTableComponent from "./ContactsTableComponent";
+import React from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import ContactsTableComponent from './ContactsTableComponent';
 
 const contactsAnimation = {
   hidden: { opacity: 0, y: 100 },
@@ -24,7 +24,7 @@ function ContactsComponent({ details, setDetails }) {
       >
         <TitleCont>
           <div className="title">Contacts</div>
-          <div className="noContacts">({details.totalItems})</div>
+          <div className="noContacts">({details.length})</div>
         </TitleCont>
         <ContactsTableComponent details={details} />
       </ContactsCont>

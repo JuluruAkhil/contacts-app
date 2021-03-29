@@ -1,6 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
-import styled from "styled-components";
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 export const navAnimation = {
   hidden: { opacity: 0, y: -100 },
@@ -14,26 +15,17 @@ export const navAnimation = {
 };
 
 function NavComponent({ setDetails, personal }) {
+  const history = useHistory();
+
+  useEffect(() => {
+    history.push('/');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const logout = () => {
-    window.gapi.client
-      .init({
-        apikey: "AIzaSyBwqL8NaarxDj6ruvpEkekejX4jQmBQgc0",
-        clientId:
-          "1058139453928-21lt7pcenia6gl7eev3cb2ffl05v32un.apps.googleusercontent.com",
-        discoveryDocs: [
-          "https://www.googleapis.com/discovery/v1/apis/people/v1/rest",
-        ],
-        scope: "https://www.googleapis.com/auth/contacts.readonly",
-      })
-      .then(() => {
-        window.gapi.auth2
-          .getAuthInstance()
-          .signOut()
-          .then(() => {
-            setDetails(null);
-            localStorage.setItem("details", null);
-          });
-      });
+    setDetails(null);
+    localStorage.removeItem('details');
+    localStorage.removeItem('personal');
   };
 
   return (
@@ -95,7 +87,7 @@ function NavComponent({ setDetails, personal }) {
 
       <User>
         <Photo>
-          <img src={personal.photo} alt="profile" />
+          <img src={personal.picture} alt="profile" />
         </Photo>
 
         <Details>

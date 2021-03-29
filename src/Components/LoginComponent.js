@@ -1,8 +1,10 @@
-import React from "react";
-import { motion } from "framer-motion";
-import styled from "styled-components";
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-import googleLogo from "../assets/google-logo.png";
+import googleLogo from '../assets/google-logo.png';
 
 function LoginComponent({
   details,
@@ -12,66 +14,17 @@ function LoginComponent({
   toast,
   setToast,
 }) {
-  function listConnectionNames() {
-    window.gapi.client.people.people.connections
-      .list({
-        resourceName: "people/me",
-        pageSize: 500,
-        personFields: "names,emailAddresses,coverPhotos,phoneNumbers,photos",
-      })
-      .then(function (response) {
-        let result = response.result;
-        if (result.connections === undefined) {
-          setToast("warning");
-        } else {
-          setDetails(result);
-          localStorage.setItem("details", JSON.stringify(result));
-          setToast("success");
-        }
-      });
-  }
-
-  const userDetails = () => {
-    let profile = window.gapi.auth2
-      .getAuthInstance()
-      .currentUser.get()
-      .getBasicProfile();
-    setPersonal({
-      name: profile.getName(),
-      email: profile.getEmail(),
-      photo: profile.getImageUrl(),
-    });
-    localStorage.setItem(
-      "personal",
-      JSON.stringify({
-        name: profile.getName(),
-        email: profile.getEmail(),
-        photo: profile.getImageUrl(),
-      })
-    );
-  };
-
-  const login = () => {
-    window.gapi.client
-      .init({
-        apikey: "AIzaSyBwqL8NaarxDj6ruvpEkekejX4jQmBQgc0",
-        clientId:
-          "1058139453928-21lt7pcenia6gl7eev3cb2ffl05v32un.apps.googleusercontent.com",
-        discoveryDocs: [
-          "https://www.googleapis.com/discovery/v1/apis/people/v1/rest",
-        ],
-        scope: "https://www.googleapis.com/auth/contacts.readonly",
-      })
-      .then(() => {
-        window.gapi.auth2
-          .getAuthInstance()
-          .signIn()
-          .then(() => {
-            listConnectionNames();
-            userDetails();
-          });
-      });
-  };
+  const history = useHistory();
+  useEffect(() => {
+    let search = window.location.search;
+    let params = new URLSearchParams(search);
+    let foo = params.get('code');
+    if (foo !== null) {
+      responseGoogle(foo);
+      setToast('success');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const loginAnimation = {
     hidden: { opacity: 0, y: 100 },
@@ -80,19 +33,46 @@ function LoginComponent({
       y: 0,
       transition: {
         duration: 1,
-        when: "beforeChildren",
+        when: 'beforeChildren',
         staggerChildren: 0.25,
       },
     },
   };
 
+  const responseGoogle = (code) => {
+    console.log(code);
+    axios.get(`http://localhost:8000/callback?code=${code}`).then((res) => {
+      console.log(res.data);
+
+      if (res.data.contacts.length > 1) {
+        setDetails(res.data.contacts);
+        localStorage.setItem('details', JSON.stringify(res.data.contacts));
+        setPersonal(res.data.personal);
+        localStorage.setItem('personal', JSON.stringify(res.data.personal));
+      } else {
+        history.push('/');
+        setDetails(undefined);
+        setPersonal(undefined);
+        setToast('warning');
+        localStorage.removeItem('details');
+        localStorage.removeItem('personal');
+      }
+    });
+  };
+
   return (
-    <LoginComp variants={loginAnimation} initial="hidden" animate="show">
-      <StyledButton onClick={login}>
-        <img src={googleLogo} alt="google" />
-        <div>Sign In</div>
-      </StyledButton>
-    </LoginComp>
+    <>
+      {toast === 'hidden' ? (
+        <LoginComp variants={loginAnimation} initial="hidden" animate="show">
+          <StyledButton href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcontacts.readonly%20email%20profile&response_type=code&client_id=652050846854-i6vm9mivl8uva574pbr7sps4q5fd3fg6.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A5500%2F">
+            <img src={googleLogo} alt="google" />
+            <div>Sign In</div>
+          </StyledButton>
+        </LoginComp>
+      ) : (
+        ''
+      )}
+    </>
   );
 }
 
@@ -112,7 +92,8 @@ const LoginComp = styled(motion.div)`
   }
 `;
 
-const StyledButton = styled(motion.button)`
+const StyledButton = styled(motion.a)`
+  text-decoration: none;
   background-color: #0a45c2;
   outline: none;
   border: none;

@@ -1,37 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import ContactCardComponent from "./ContactCardComponent";
+import React from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import ContactCardComponent from './ContactCardComponent';
 
 function ContactsTableComponent({ details }) {
-  const [parsedDetails, setParsedDetails] = useState(null);
-
-  useEffect(() => {
-    if (details !== null) {
-      const connections = details.connections;
-      let newDetails = [];
-      connections.forEach((connection) => {
-        let newConnection = {};
-        if (connection.names) {
-          newConnection.name = connection.names[0].displayName;
-        }
-        if (connection.phoneNumbers) {
-          newConnection.phoneNumber = connection.phoneNumbers[0].value
-            .split(" ")
-            .join("");
-        }
-        if (connection.photos) {
-          newConnection.photo = connection.photos[0].url;
-        }
-        if (connection.emailAddresses) {
-          newConnection.emailAddress = connection.emailAddresses[0].value;
-        }
-        newDetails.push(newConnection);
-      });
-      setParsedDetails(newDetails);
-    }
-  }, [details, details.connections]);
-
   return (
     <ContactsTableCont>
       <div className="headings">
@@ -40,8 +12,8 @@ function ContactsTableComponent({ details }) {
         <div id="phone">PHONE NUMBER</div>
       </div>
       <div className="scroll">
-        {parsedDetails &&
-          parsedDetails.map((connection, key) => {
+        {details &&
+          details.map((connection, key) => {
             return <ContactCardComponent key={key} connection={connection} />;
           })}
       </div>
