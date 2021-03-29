@@ -41,23 +41,25 @@ function LoginComponent({
 
   const responseGoogle = (code) => {
     console.log(code);
-    axios.get(`http://localhost:8000/callback?code=${code}`).then((res) => {
-      console.log(res.data);
+    axios
+      .get(`http://142.93.220.167:8000/callback?code=${code}`)
+      .then((res) => {
+        console.log(res.data);
 
-      if (res.data.contacts.length > 1) {
-        setDetails(res.data.contacts);
-        localStorage.setItem('details', JSON.stringify(res.data.contacts));
-        setPersonal(res.data.personal);
-        localStorage.setItem('personal', JSON.stringify(res.data.personal));
-      } else {
-        history.push('/');
-        setDetails(undefined);
-        setPersonal(undefined);
-        setToast('warning');
-        localStorage.removeItem('details');
-        localStorage.removeItem('personal');
-      }
-    });
+        if (res.data.contacts.length > 1) {
+          setDetails(res.data.contacts);
+          localStorage.setItem('details', JSON.stringify(res.data.contacts));
+          setPersonal(res.data.personal);
+          localStorage.setItem('personal', JSON.stringify(res.data.personal));
+        } else {
+          history.push('/');
+          setDetails(undefined);
+          setPersonal(undefined);
+          setToast('warning');
+          localStorage.removeItem('details');
+          localStorage.removeItem('personal');
+        }
+      });
   };
 
   return (
